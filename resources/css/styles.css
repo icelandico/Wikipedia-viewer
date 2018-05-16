@@ -139,7 +139,7 @@ h2 {
 
 footer {
     margin-top: auto;
-    flex-grow: 1;
+    flex-shrink: 2;
     background: #373737;
     width: 100%;
 }
