@@ -2,12 +2,10 @@
     box-sizing: border-box;
 }
 
-body, html {
+body {
     background: #F4F4F4;
     font-family: "Lato Light", sans-serif;
     color: #373737;
-    width: 100%;
-    min-height: 100vh;
 }
 
 .container {
@@ -15,11 +13,6 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-
-.flex-item {
-    flex: 1;
 }
 
 h2 {
@@ -87,6 +80,7 @@ h2 {
 }
 
 .results-pan {
+    flex: 1;
     margin-top: 10%;
     padding: 15px;
     min-width: 75%;
@@ -138,20 +132,14 @@ h2 {
 }
 
 footer {
-    width: 100%;
+    flex: 1;
     background: #373737;
-    color: #F4F4F4;
-    text-align: center;
+    height: 10vh;
+    width: 100%;
 }
 
-.footer-icons {
-    font-size: 15px;
-
-}
-
-.footer-icons span {
+footer h2 {
     color: #F4F4F4;
-    margin: 1% 10%;
 }
 
 @media screen and (min-width: 768px ) {
