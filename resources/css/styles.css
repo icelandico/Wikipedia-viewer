@@ -150,6 +150,7 @@ footer {
     margin-top: 2%;
     text-align: center;
     color: #F4F4F4;
+    font-size: 1.5em;
 }
 
 .footer-icons {
@@ -161,7 +162,6 @@ footer {
     margin: 2% 5%;
     font-size: 1.5em;
     transition: all 0.5s ease-in-out;
-
 }
 
 .footer-icons span:hover {
