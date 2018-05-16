@@ -33,6 +33,11 @@ h2 {
     display: block;
     margin: 0 auto;
     transform: scale(0.8);
+    transition: 0.7s ease-in-out;
+}
+
+.wiki-img:hover {
+    filter: contrast(10%);
 }
 
 .search-navigation {
@@ -55,6 +60,7 @@ h2 {
     border: 2px solid #46344E;
     padding-left: 25px;
     box-shadow: 1px 2px #6B6E70;
+    transition: 0.3s ease-in-out;
 }
 
 .search-pan__input:focus {
@@ -82,10 +88,12 @@ h2 {
     background: #DCD0C0;
     font-size: 1em;
     text-transform: uppercase;
+    transition: 0.3s ease-out;
 }
 
 .search-pan__button:focus {
     outline: none;
+    box-shadow: 0 0 15px rgba(0,0,0,1);
 }
 
 .results-pan {
