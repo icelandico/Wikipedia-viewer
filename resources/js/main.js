@@ -1,6 +1,6 @@
 var wikiApi = new XMLHttpRequest();
 var wikiRandom = "https://en.wikipedia.org/wiki/Special:Random";
-var wikiApiSite = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=";
+var wikiApiSite = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=";
 var btnRnd = document.querySelector(".random");
 var btnSrch = document.querySelector(".search");
 var testing = document.querySelector(".test");
@@ -45,6 +45,11 @@ function createListElem(heading, content, link) {
 }
 
 btnRnd.addEventListener('click', randomArticle);
+input.addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) {
+        parse();
+    }
+});
 btnSrch.addEventListener('click', parse);
 
 
