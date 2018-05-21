@@ -31,7 +31,7 @@ h2 {
 
 .wiki-img {
     display: block;
-    margin: 0 auto;
+    margin: 5% auto;
     transform: scale(0.8);
     transition: 0.7s ease-in-out;
 }
