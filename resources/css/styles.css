@@ -43,23 +43,28 @@ h2 {
 .search-navigation {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
 }
 
 .search-pan {
     min-width: 35%;
+}
+
+.search-pan__button {
+    height: 45px;
+    border: 2px solid #46344E;
     border-radius: 10px;
+    background: #DCD0C0;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: 0.3s ease-out;
 }
 
 .search-pan__input {
-    margin: 0 auto;
+    float: left;
     height: 45px;
-    border-radius: 10px;
     border: 2px solid #46344E;
+    border-radius: 10px 0 0 10px;
     padding-left: 25px;
-    box-shadow: 1px 2px #6B6E70;
     transition: 0.3s ease-in-out;
 }
 
@@ -72,28 +77,26 @@ h2 {
     font-size: 1.5vh;
 }
 
-.search-pan__buttons {
-    flex-grow: 1;
-    display: flex;
-    width: 100%;
+
+.search-pan__button.search {
+    float: left;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
 }
 
-.search-pan__button{
+.search-pan__buttons {
     flex: 1;
-    height: 45px;
-    margin: 5% 2%;
-    border-radius: 10px;
-    border: 1px solid #374785;
-    box-shadow: 1px 2px #6B6E70;
-    background: #DCD0C0;
-    font-size: 1em;
-    text-transform: uppercase;
-    transition: 0.3s ease-out;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.random {
+    width: 100%;
 }
 
 .search-pan__button:focus {
     outline: none;
-    box-shadow: 0 0 15px rgba(0,0,0,1);
+    box-shadow: 0 0 5px rgba(0,0,0,1);
 }
 
 .results-pan {
@@ -180,27 +183,19 @@ footer {
 @media screen and (min-width: 768px ) {
     .search-navigation {
         flex-direction: row;
-        min-width: 25%;
-        max-width: 50%;
     }
 
-    .search-pan input {
-        float: left;
-        width: 100%;
+    .search-pan {
+
     }
 
     .search-pan__buttons {
-        float: left;
-        width: 40%;
-    }
-
-    .search-pan__button{
-        float: left;
-        width: 20%;
-        margin-right: 1%;
+        margin-top: 0;
+        margin-left: 3%;
     }
 
     .results-pan {
+        flex: 2;
         margin: 0 auto;
         padding-left: 0;
     }
