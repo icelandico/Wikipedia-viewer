@@ -3,11 +3,8 @@ var wikiRandom = "https://en.wikipedia.org/wiki/Special:Random";
 var wikiApiSite = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=";
 var btnRnd = document.querySelector(".random");
 var btnSrch = document.querySelector(".search");
-var testing = document.querySelector(".test");
-var searchPan = document.querySelector(".search-pan");
 var input = document.querySelector(".search-pan__input");
 var unorderedList = document.querySelector(".results-pan__items");
-var listItem = document.querySelector(".results-item");
 var data;
 
 function parse() {
@@ -51,5 +48,3 @@ input.addEventListener('keyup', function(e) {
     }
 });
 btnSrch.addEventListener('click', parse);
-
-
