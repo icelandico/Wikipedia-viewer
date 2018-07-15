@@ -1,14 +1,23 @@
 var wikiApi = new XMLHttpRequest();
-var wikiRandom = "https://en.wikipedia.org/wiki/Special:Random";
-var wikiApiSite = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=";
-var btnRnd = document.querySelector(".random");
-var btnSrch = document.querySelector(".search");
-var input = document.querySelector(".search-pan__input");
-var unorderedList = document.querySelector(".results-pan__items");
+var wikiRandom = 'https://en.wikipedia.org/wiki/Special:Random';
+var articlesLimit = 10;
+var wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' + articlesLimit + '&namespace=0&format=json&search=';
+var btnRnd = document.querySelector('.random');
+var btnSrch = document.querySelector('.search');
+var input = document.querySelector('.search-pan__input');
+var unorderedList = document.querySelector('.results-pan__items');
 var data;
 
+btnRnd.addEventListener('click', randomArticle);
+input.addEventListener('keyup', function(e) {
+  if (e.keyCode === 13) {
+    parse();
+  }
+});
+btnSrch.addEventListener('click', parse);
+
 function parse() {
-    unorderedList.innerHTML = "";
+    unorderedList.innerHTML = '';
     var url = wikiApiSite + input.value;
     wikiApi.open('GET', url, true);
     wikiApi.onload = function () {
@@ -41,10 +50,4 @@ function createListElem(heading, content, link) {
     unorderedList.insertAdjacentHTML("beforeend", newDiv);
 }
 
-btnRnd.addEventListener('click', randomArticle);
-input.addEventListener('keyup', function(e) {
-    if (e.keyCode === 13) {
-        parse();
-    }
-});
-btnSrch.addEventListener('click', parse);
+
