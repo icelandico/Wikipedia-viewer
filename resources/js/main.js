@@ -48,15 +48,21 @@ function createListElem(heading, content, link) {
                       '<h2>' + heading + '</h2>' +
                       '<p>' + content + '</p>' +
                   '</a>' +
-              '</li>';
+               '</li>';
   unorderedList.insertAdjacentHTML("beforeend", newDiv);
 }
 
 function changeArticlesLimit() {
   var selectedLimitValue = selectedLimit.value;
-  wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
-  selectedLimitValue + '&namespace=0&format=json&search=';
-  parse(selectedLimitValue)
+  if (input.value !== '') {
+    wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
+      selectedLimitValue + '&namespace=0&format=json&search=';
+    parse()
+  } else {
+    articlesLimit = selectedLimitValue;
+    wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
+      articlesLimit + '&namespace=0&format=json&search=';
+  }
 }
 
 
