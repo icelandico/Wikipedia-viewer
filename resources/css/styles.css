@@ -77,7 +77,6 @@ h2 {
     font-size: 1.5vh;
 }
 
-
 .search-pan__button.search {
     float: left;
     border-left: none;
@@ -99,11 +98,29 @@ h2 {
     box-shadow: 0 0 5px rgba(0,0,0,1);
 }
 
+.search-pan__select {
+    margin-left: 3%;
+}
+
+select {
+    height: 45px;
+    padding: 10px;
+    background: #DCD0C0;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid #46344E;
+}
+
+.tooltiptext {
+    visibility: hidden;
+}
+
 .results-pan {
     flex-grow: 3;
     min-width: 75%;
     max-width: 95%;
 }
+
 .results-item a {
     display: block;
     text-decoration: none;
