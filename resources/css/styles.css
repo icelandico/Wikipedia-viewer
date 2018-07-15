@@ -99,20 +99,21 @@ h2 {
 }
 
 .search-pan__select {
-    margin-left: 3%;
+    flex: 1;
+    margin-top: 5%;
+    text-align: center;
+    width: 100%;
 }
 
-select {
+.search-pan__select-bar {
     height: 45px;
     padding: 10px;
     background: #DCD0C0;
     font-size: 1em;
     border-radius: 10px;
     border: 2px solid #46344E;
-}
-
-.tooltiptext {
-    visibility: hidden;
+    width: 100%;
+    text-indent: 45%;
 }
 
 .results-pan {
@@ -205,6 +206,15 @@ footer {
     .search-pan__buttons {
         margin-top: 0;
         margin-left: 3%;
+    }
+
+    .search-pan__select {
+        margin-top: 0;
+        margin-left: 3%;
+    }
+
+    .search-pan__select-bar {
+        text-indent: 25%;
     }
 
     .results-pan {
