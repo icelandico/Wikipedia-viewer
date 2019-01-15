@@ -1,7 +1,6 @@
 var wikiApi = new XMLHttpRequest();
-var wikiRandom = 'https://en.wikipedia.org/wiki/Special:Random';
 var articlesLimit = '10';
-var wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' + articlesLimit + '&namespace=0&format=json&search=';
+let searchValue = ''
 var btnRnd = document.querySelector('.random');
 var btnSrch = document.querySelector('.search');
 var resultList = document.querySelector('.results-pan__items');
@@ -19,8 +18,9 @@ btnSrch.addEventListener('click', parseData);
 selectedLimit.addEventListener('change', changeArticlesLimit);
 
 async function parseData(func) {
+  searchValue = input.value
   clearEntries()
-  const address = `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=${articlesLimit}&namespace=0&format=json&search=${input.value}`;
+  const address = `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=${articlesLimit}&namespace=0&format=json&search=${searchValue}`;
   const response = await fetch(address);
   const result = await response.json();
   func(result)
@@ -33,6 +33,7 @@ function clearEntries() {
 }
 
 function randomArticle() {
+  const wikiRandom = 'https://en.wikipedia.org/wiki/Special:Random';
     window.open(wikiRandom, '_blank')
 }
 
@@ -56,14 +57,10 @@ function createListElem(heading, content, link) {
 }
 
 function changeArticlesLimit() {
-  var selectedLimitValue = selectedLimit.value;
+  articlesLimit = selectedLimit.value;
   if (input.value !== '') {
-    wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
-      selectedLimitValue + '&namespace=0&format=json&search=';
     parseData(getValues)
   } else {
-    articlesLimit = selectedLimitValue;
-    wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
-      articlesLimit + '&namespace=0&format=json&search=';
+    return null
   }
 }
