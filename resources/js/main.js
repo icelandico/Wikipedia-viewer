@@ -4,29 +4,32 @@ var articlesLimit = '10';
 var wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' + articlesLimit + '&namespace=0&format=json&search=';
 var btnRnd = document.querySelector('.random');
 var btnSrch = document.querySelector('.search');
-var input = document.querySelector('.search-pan__input');
-var unorderedList = document.querySelector('.results-pan__items');
-var selectedLimit = document.querySelector('.search-pan__select-bar');
+var resultList = document.querySelector('.results-pan__items');
+const selectedLimit = document.querySelector('.search-pan__select-bar');
+const input = document.querySelector('.search-pan__input');
 var data;
 
 btnRnd.addEventListener('click', randomArticle);
 input.addEventListener('keyup', function(e) {
   if (e.keyCode === 13) {
-    parse();
+    parseData(getValues);
   }
 });
-btnSrch.addEventListener('click', parse);
+btnSrch.addEventListener('click', parseData);
 selectedLimit.addEventListener('change', changeArticlesLimit);
 
-function parse() {
-  unorderedList.innerHTML = '';
-  var url = wikiApiSite + input.value;
-  wikiApi.open('GET', url, true);
-  wikiApi.onload = function () {
-      data = JSON.parse(this.response);
-      getValues(data);
-  };
-  wikiApi.send();
+async function parseData(func) {
+  clearEntries()
+  const address = `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=${articlesLimit}&namespace=0&format=json&search=${input.value}`;
+  const response = await fetch(address);
+  const result = await response.json();
+  func(result)
+}
+
+function clearEntries() {
+  while (resultList.firstChild) {
+    resultList.removeChild(resultList.firstChild)
+  }
 }
 
 function randomArticle() {
@@ -49,7 +52,7 @@ function createListElem(heading, content, link) {
                       '<p>' + content + '</p>' +
                   '</a>' +
                '</li>';
-  unorderedList.insertAdjacentHTML("beforeend", newDiv);
+  resultList.insertAdjacentHTML("beforeend", newDiv);
 }
 
 function changeArticlesLimit() {
@@ -57,12 +60,10 @@ function changeArticlesLimit() {
   if (input.value !== '') {
     wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
       selectedLimitValue + '&namespace=0&format=json&search=';
-    parse()
+    parseData(getValues)
   } else {
     articlesLimit = selectedLimitValue;
     wikiApiSite = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=' +
       articlesLimit + '&namespace=0&format=json&search=';
   }
 }
-
-
