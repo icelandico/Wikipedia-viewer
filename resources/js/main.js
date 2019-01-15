@@ -1,15 +1,13 @@
-var wikiApi = new XMLHttpRequest();
-var articlesLimit = '10';
+let articlesLimit = '10';
 let searchValue = ''
-var btnRnd = document.querySelector('.random');
-var btnSrch = document.querySelector('.search');
-var resultList = document.querySelector('.results-pan__items');
+const btnRnd = document.querySelector('.random');
+const btnSrch = document.querySelector('.search');
+const resultList = document.querySelector('.results-pan__items');
 const selectedLimit = document.querySelector('.search-pan__select-bar');
 const input = document.querySelector('.search-pan__input');
-var data;
 
 btnRnd.addEventListener('click', randomArticle);
-input.addEventListener('keyup', function(e) {
+input.addEventListener('keyup', e => {
   if (e.keyCode === 13) {
     parseData(getValues);
   }
@@ -23,7 +21,12 @@ async function parseData(func) {
   const address = `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&limit=${articlesLimit}&namespace=0&format=json&search=${searchValue}`;
   const response = await fetch(address);
   const result = await response.json();
-  func(result)
+  try {
+    func(result)
+  }
+  catch(err) {
+    alert('Dont leave it blank!')
+  }
 }
 
 function clearEntries() {
@@ -34,16 +37,14 @@ function clearEntries() {
 
 function randomArticle() {
   const wikiRandom = 'https://en.wikipedia.org/wiki/Special:Random';
-    window.open(wikiRandom, '_blank')
+  window.open(wikiRandom, '_blank');
 }
 
 function getValues(item) {
-  var heading = item[1];
-  var content = item[2];
-  var link = item[3];
-  for (var i = 0; i < heading.length; i++) {
-      createListElem(heading[i], content[i], link[i])
-  }
+  const heading = item[1];
+  const content = item[2];
+  const link = item[3];
+  heading.map((item, index) => createListElem(heading[index], content[index], link[index]))
 };
 
 function createListElem(heading, content, link) {
