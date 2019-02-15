@@ -7,12 +7,17 @@ const selectedLimit = document.querySelector('.search-pan__select-bar');
 const input = document.querySelector('.search-pan__input');
 
 btnRnd.addEventListener('click', randomArticle);
+
 input.addEventListener('keyup', e => {
   if (e.keyCode === 13) {
     parseData(getValues);
   }
 });
-btnSrch.addEventListener('click', parseData);
+
+btnSrch.addEventListener('click', () => {
+  parseData(getValues)
+})
+
 selectedLimit.addEventListener('change', changeArticlesLimit);
 
 async function parseData(func) {
